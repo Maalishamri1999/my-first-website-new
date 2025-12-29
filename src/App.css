@@ -1,38 +1,490 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap');
+
+:root {
+  --primary: #153E2E;
+  --bg-color: #F8F9F8;
+  --white: #ffffff;
+  --gold: #D4AF37;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Tajawal', sans-serif;
+  background-color: var(--bg-color);
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background-color: var(--white);
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links span {
+  font-size: 16px;
+  color: #555;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links span:hover {
+  color: var(--primary);
+}
+
+.nav-icons span {
+  margin-left: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hero-container {
+  padding: 20px 5%;
+}
+
+.hero-box {
+  background-color: var(--primary);
+  border-radius: 40px;
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  flex: 1;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 55px;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 18px;
+  opacity: 0.9;
+  max-width: 500px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.btn-white {
+  background-color: var(--white);
+  color: var(--primary);
+  padding: 15px 45px;
+  border-radius: 50px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-white:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.hero-image img {
+  width: 400px;
+  border-radius: 20px;
+  box-shadow: -20px 20px 0px rgba(255,255,255,0.1);
+  transform: rotate(-3deg);
+}
+
+.section-title {
   text-align: center;
+  color: var(--primary);
+  font-size: 30px;
+  margin: 60px 0 40px 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.products-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 5% 60px;
+  flex-wrap: wrap;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.product-card {
+  background: var(--white);
+  border-radius: 30px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-img {
+  height: 200px;
+  background-color: #eee;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-info h3 {
+  margin: 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.card-info p {
+  color: #777;
+  font-size: 14px;
+  margin: 10px 0 20px 0;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.add-btn {
+  background-color: var(--primary);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background-color: #0d291e;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+
+  .hero-box {
+    flex-direction: column-reverse;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-image {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 250px;
+    transform: rotate(0deg);
+  }
+
+  .products-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card {
+    width: 100%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.contact-cta {
+  background-color: #e8f5e9;
+  text-align: center;
+  padding: 80px 20px;
+  margin-top: 60px;
+  border-radius: 40px 40px 0 0;
+}
+
+.contact-cta h2 {
+  color: var(--primary);
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.contact-cta p {
+  color: #555;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.footer {
+  background-color: var(--primary);
+  color: white;
+  padding: 60px 20px 20px;
+  text-align: center;
+}
+
+.footer-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 40px;
+}
+
+.footer-col {
+  max-width: 600px;
+}
+
+.footer-col h3 {
+  font-size: 30px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.footer-col h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #D4AF37;
+}
+
+.footer-col p {
+  opacity: 0.9;
+  line-height: 1.8;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links li {
+  font-size: 16px;
+}
+
+.footer-links a {
   color: white;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.footer-links a:hover {
+  opacity: 1;
+  color: #D4AF37;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.copyright {
+  margin-top: 30px;
+  opacity: 0.6;
+  font-size: 14px;
+  direction: ltr;
+}
+
+/* Cart Overlay */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-popup {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  padding: 30px;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  animation: slideIn 0.3s ease-out;
+}
+
+.close-cart {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+  padding: 0 0 20px 0;
+}
+
+.cart-items {
+  max-height: 60vh;
+  overflow-y: auto; 
+  padding-right: 5px;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #ff4d4d;
+}
+
+.cart-footer-section {
+  background: white;
+  padding-top: 15px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.btn-whatsapp-checkout {
+  background-color: #25D366;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp-checkout:hover {
+  background-color: #128C7E;
+  transform: translateY(-2px);
+}
+
+.cart-badge {
+  background-color: #D4AF37;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Trust Badge */
+.trust-badge-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.trust-badge {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #D4AF37;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-width: 350px;
+}
+
+.badge-icon {
+  font-size: 24px;
+}
+
+.badge-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.badge-title {
+  color: #D4AF37;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.badge-number {
+  color: white;
+  font-size: 12px;
+  opacity: 0.8;
+  font-family: monospace;
+  letter-spacing: 1px;
 }
