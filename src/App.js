@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import smartImge from './smart.jpg';
 import webImge from './web.jpg';
 import dezImge from './dez.jpg';
 
