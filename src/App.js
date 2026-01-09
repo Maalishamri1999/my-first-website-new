@@ -1,31 +1,46 @@
 import React, { useState } from 'react';
 import './App.css';
 import smartImge from './smart.jpg';
-import webImge from './web.jpg'
-import dezImge from './dez.jpg'
+import webImge from './web.jpg';
+import dezImge from './dez.jpg';
+
 function App() {
   const phoneNumber = "966555618227"; 
 
   const [products] = useState([
-
     {
       id: 2,
       name: "متجر إلكتروني",
-      desc: "بيع منتجاتك واستقبل المدفوعات",
-      price: 999,
+      desc: "بيع منتجاتك واستقبل المدفوعات مع لوحة تحكم",
+      price: 1800,          
+      oldPrice: 3500,       
       image: dezImge
     },
     {
       id: 3,
       name: " تصميم صفحات الهبوط ",
-      desc: "مثالية للمطاعم (منيو)، العروض الخاصة، والمنتجات المميزة",
-      price: 299,
+      desc: "مثالية للمطاعم (منيو)، العروض الخاصة",
+      price: 299,          
+      oldPrice: 650,       
       image: webImge
     },
   ]);
 
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
+
+  // 👇 وظيفة للتمرير السلس إلى قسم الباقات
+  const scrollToProducts = () => {
+    const section = document.getElementById('products-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // 👇 وظيفة للعودة للأعلى (زر الرئيسية)
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const addToCart = (product) => {
     setCart([...cart, product]);
@@ -59,10 +74,11 @@ function App() {
   return (
     <div>
       <nav className="navbar">
-        <div className="logo" translate="no">SOUL</div>
+        <div className="logo" translate="no" onClick={scrollToTop} style={{cursor: 'pointer'}}>SOUL</div>
         <div className="nav-links">
-          <span>الرئيسية</span>
-          <span>باقات المواقع</span>
+          {/* ✅ تم تفعيل الأزرار هنا */}
+          <span onClick={scrollToTop} style={{cursor: 'pointer'}}>الرئيسية</span>
+          <span onClick={scrollToProducts} style={{cursor: 'pointer'}}>باقات المواقع</span>
         </div>
         <div className="nav-icons" onClick={() => setShowCart(true)} style={{cursor: 'pointer', position: 'relative'}}>
           <span>🛒</span>
@@ -114,7 +130,8 @@ function App() {
           <div className="hero-content">
             <h1>صمم موقعك <br/> وابدأ انطلاقتك</h1>
             <p>خدمات تصميم مواقع ومتاجر إلكترونية احترافية</p>
-            <button className="btn-white">تصفح الباقات</button>
+            {/* ✅ تم تفعيل الزر هنا */}
+            <button className="btn-white" onClick={scrollToProducts}>تصفح الباقات</button>
           </div>
           <div className="hero-image">
              <img 
@@ -126,7 +143,8 @@ function App() {
         </div>
       </div>
 
-      <h2 className="section-title">باقاتنا المميزة</h2>
+      {/* ✅ أضفنا ID هنا عشان الأزرار تعرف وين تروح */}
+      <h2 className="section-title" id="products-section">باقاتنا المميزة</h2>
       <div className="products-grid">
         {products.map((product) => (
           <div key={product.id} className="product-card">
@@ -136,10 +154,30 @@ function App() {
             <div className="card-info">
               <h3>{product.name}</h3>
               <p>{product.desc}</p>
-              <div className="price-row">
-                <span className="price">{product.price} <small style={{fontSize:'14px'}}>ر.س</small></span>
+              
+              <div className="price-row" style={{alignItems: 'center'}}>
+                
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+                    {/* السعر القديم */}
+                    {product.oldPrice && (
+                        <span style={{
+                            textDecoration: 'line-through', 
+                            color: '#999', 
+                            fontSize: '12px',
+                            marginBottom: '-5px'
+                        }}>
+                            {product.oldPrice} ر.س
+                        </span>
+                    )}
+                    {/* السعر الجديد */}
+                    <span className="price">
+                        {product.price} <small style={{fontSize:'14px'}}>ر.س</small>
+                    </span>
+                </div>
+
                 <button className="add-btn" onClick={() => addToCart(product)}>+</button>
               </div>
+
             </div>
           </div>
         ))}
@@ -176,7 +214,6 @@ function App() {
           <div className="footer-col">
             <h4>تواصل معنا</h4>
             <ul className="footer-links">
-              <li style={{cursor:'pointer'}} onClick={handleContact}>info@SOUL.com ✉️</li>
               <li style={{cursor:'pointer'}} onClick={handleContact}>+966 555618227 📱</li>
             </ul>
           </div>

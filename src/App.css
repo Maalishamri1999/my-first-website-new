@@ -488,3 +488,64 @@ body {
   font-family: monospace;
   letter-spacing: 1px;
 }
+
+/* =========================================
+   ✨ تأثيرات الأنيميشن السحرية ✨
+   ========================================= */
+
+/* 1. حركة الصورة العائمة (لصورة المبرمج في الأعلى) */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.hero-image img {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* 2. ظهور النصوص بنعومة من الأسفل */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content {
+  animation: fadeInUp 1.2s ease-out;
+}
+
+/* 3. حركة الكروت عند مرور الماوس (تفاعل) */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px); /* يرتفع الكرت لفوق */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* الظل يقوى */
+  border-color: #153E2E; /* يتغير لون الإطار */
+}
+
+/* 4. نبض زر الواتساب (لجذب الانتباه) */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.contact-cta button, .btn-whatsapp-checkout {
+  animation: pulse 2s infinite;
+}
+
+/* 5. تحسين شكل السلة (تتحرك لما يزيد العدد) */
+.nav-icons {
+  transition: transform 0.2s;
+}
+.nav-icons:active {
+  transform: scale(0.9);
+}
