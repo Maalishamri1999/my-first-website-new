@@ -11,8 +11,8 @@ function App() {
       id: 2,
       name: "متجر إلكتروني",
       desc: "بيع منتجاتك واستقبل المدفوعات مع لوحة تحكم",
-      price: 1800,          
-      oldPrice: 3500,       
+      price: 4500,          
+      oldPrice: 7500,       
       image: dezImge
     },
     {
