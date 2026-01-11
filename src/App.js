@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react'; // 👈 1. أضفنا useEffect
-import ReactGA from "react-ga4"; // 👈 2. استدعاء مكتبة التحليلات
+import React, { useState, useEffect } from 'react';
+import ReactGA from "react-ga4"; // استدعاء جوجل أناليتكس
+// 👇 1. استدعاء مكتبة التنبيهات وتنسيقاتها
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './App.css';
 import webImge from './web.jpg';
 import dezImge from './dez.jpg';
 
 function App() {
 
-  // 👇 3. كود تفعيل Google Analytics
+  // كود تشغيل جوجل أناليتكس
   useEffect(() => {
-    // كود التتبع الخاص بمشروع سول
     ReactGA.initialize("G-J86V20VFYC");
-    
-    // إرسال إشعار بأن الصفحة تم زيارتها
     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
   }, []);
 
@@ -39,7 +40,6 @@ function App() {
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
 
-  // 👇 وظيفة للتمرير السلس إلى قسم الباقات
   const scrollToProducts = () => {
     const section = document.getElementById('products-section');
     if (section) {
@@ -47,17 +47,35 @@ function App() {
     }
   };
 
-  // 👇 وظيفة للعودة للأعلى (زر الرئيسية)
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // 👇 2. تعديل دالة الإضافة لتشغيل التنبيه
   const addToCart = (product) => {
     setCart([...cart, product]);
+    
+    // إظهار رسالة نجاح أنيقة
+    toast.success(`تم إضافة "${product.name}" للسلة بنجاح! 🛒`, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark", // اخترنا الثيم الداكن ليناسب موقعك
+    });
   };
 
   const removeFromCart = (indexToRemove) => {
     setCart(cart.filter((_, index) => index !== indexToRemove));
+    // تنبيه عند الحذف
+    toast.error("تم حذف المنتج من السلة 🗑️", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+    });
   };
 
   const totalAmount = cart.reduce((total, item) => total + item.price, 0);
@@ -67,7 +85,14 @@ function App() {
   };
 
   const checkoutViaWhatsApp = () => {
-    if (cart.length === 0) return alert("السلة فارغة!");
+    if (cart.length === 0) {
+        // تنبيه إذا كانت السلة فارغة
+        toast.warn("السلة فارغة! أضف منتجات أولاً 🤨", {
+            position: "top-center",
+            theme: "dark",
+        });
+        return;
+    }
 
     let message = `مرحباً SOUL، أرغب بطلب الخدمات التالية:%0a%0a`;
     
@@ -83,10 +108,12 @@ function App() {
 
   return (
     <div>
+      {/* 👇 3. وضع حاوية التنبيهات هنا لتعمل في كل الموقع */}
+      <ToastContainer />
+
       <nav className="navbar">
         <div className="logo" translate="no" onClick={scrollToTop} style={{cursor: 'pointer'}}>SOUL</div>
         <div className="nav-links">
-          {/* ✅ تم تفعيل الأزرار هنا */}
           <span onClick={scrollToTop} style={{cursor: 'pointer'}}>الرئيسية</span>
           <span onClick={scrollToProducts} style={{cursor: 'pointer'}}>باقات المواقع</span>
         </div>
@@ -140,7 +167,6 @@ function App() {
           <div className="hero-content">
             <h1>صمم موقعك <br/> وابدأ انطلاقتك</h1>
             <p>خدمات تصميم مواقع ومتاجر إلكترونية احترافية</p>
-            {/* ✅ تم تفعيل الزر هنا */}
             <button className="btn-white" onClick={scrollToProducts}>تصفح الباقات</button>
           </div>
           <div className="hero-image">
@@ -153,7 +179,6 @@ function App() {
         </div>
       </div>
 
-      {/* ✅ أضفنا ID هنا عشان الأزرار تعرف وين تروح */}
       <h2 className="section-title" id="products-section">باقاتنا المميزة</h2>
       <div className="products-grid">
         {products.map((product) => (
@@ -168,7 +193,6 @@ function App() {
               <div className="price-row" style={{alignItems: 'center'}}>
                 
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                    {/* السعر القديم */}
                     {product.oldPrice && (
                         <span style={{
                             textDecoration: 'line-through', 
@@ -179,7 +203,6 @@ function App() {
                             {product.oldPrice} ر.س
                         </span>
                     )}
-                    {/* السعر الجديد */}
                     <span className="price">
                         {product.price} <small style={{fontSize:'14px'}}>ر.س</small>
                     </span>
@@ -226,7 +249,6 @@ function App() {
            <h4>تواصل معنا</h4>
            <ul className="footer-links">
            <li style={{ cursor: 'pointer' }} onClick={handleContact}>
-      {/* وضعنا الرقم داخل span وأعطيناه اتجاه LTR عشان يضبط الزائد */}
           <span style={{ direction: 'ltr', display: 'inline-block' }}>+966 555618227</span> 📱
          </li>
        </ul>
