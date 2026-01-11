@@ -204,18 +204,22 @@ function App() {
             <div className="trust-badge">
               <span className="badge-icon">✅</span>
               <div className="badge-text">
-                <span className="badge-title">موثق في منصة الأعمال</span>
-                <span className="badge-number">رقم الوثيقة: FL-379392865</span>
+                <span className="badge-title">موثق في منصة الأعمال رقم الوثيقة</span>
+
+                <span className="badge-number"> : FL-379392865</span>
               </div>
             </div>
           </div>
 
           <div className="footer-col">
-            <h4>تواصل معنا</h4>
-            <ul className="footer-links">
-              <li style={{cursor:'pointer'}} onClick={handleContact}>+966 555618227 📱</li>
-            </ul>
-          </div>
+           <h4>تواصل معنا</h4>
+           <ul className="footer-links">
+           <li style={{ cursor: 'pointer' }} onClick={handleContact}>
+      {/* وضعنا الرقم داخل span وأعطيناه اتجاه LTR عشان يضبط الزائد */}
+          <span style={{ direction: 'ltr', display: 'inline-block' }}>+966 555618227</span> 📱
+         </li>
+       </ul>
+     </div>
         </div>
         <div className="copyright"><div className="copyright">جميع الحقوق محفوظة ©  2025  </div></div>
       </footer>
