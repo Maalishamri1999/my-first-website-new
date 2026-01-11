@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // 👈 1. أضفنا useEffect
+import ReactGA from "react-ga4"; // 👈 2. استدعاء مكتبة التحليلات
 import './App.css';
 import webImge from './web.jpg';
 import dezImge from './dez.jpg';
 
 function App() {
+
+  // 👇 3. كود تفعيل Google Analytics
+  useEffect(() => {
+    // كود التتبع الخاص بمشروع سول
+    ReactGA.initialize("G-J86V20VFYC");
+    
+    // إرسال إشعار بأن الصفحة تم زيارتها
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
+
   const phoneNumber = "966555618227"; 
 
   const [products] = useState([
