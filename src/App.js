@@ -89,7 +89,7 @@ function App() {
   const checkoutViaWhatsApp = () => {
     if (cart.length === 0) {
         // تنبيه إذا كانت السلة فارغة
-        toast.warn("السلة فارغة! أضف منتجات أولاً 🤨", {
+        toast.warn("السلة فارغة! أضف منتجات أولاً ", {
             position: "top-center",
             theme: "dark",
         });
