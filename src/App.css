@@ -8,28 +8,24 @@
   --transition: 0.3s ease;
 }
 
-/* ============================
-   1. التنسيق العام (Global)
-   ============================ */
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Tajawal', sans-serif;
   background-color: var(--bg-color);
   color: #333;
-  overflow-x: hidden; /* ضروري لمنع الاهتزاز */
+  overflow-x: hidden; 
 }
 
-/* إصلاح اتجاه رقم الجوال داخل النصوص */
+
 .phone-fix {
   direction: ltr !important;
   display: inline-block;
   unicode-bidi: embed;
 }
 
-/* ============================
-   2. الهيدر (Navbar)
-   ============================ */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -123,7 +119,7 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* تنسيق الصورة (مدمج مع التعديلات الجديدة) */
+
 .hero-image {
   display: flex;
   justify-content: center;
@@ -131,7 +127,7 @@ body {
 }
 
 .hero-image img {
-  width: 200px !important; /* الحجم الجديد */
+  width: 200px !important; 
   height: auto !important;
   object-fit: cover;
   border-radius: 15px;

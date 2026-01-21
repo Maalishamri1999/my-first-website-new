@@ -1,33 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import ReactGA from "react-ga4"; // استدعاء جوجل أناليتكس
-// 👇 1. استدعاء مكتبة التنبيهات وتنسيقاتها
+import ReactGA from "react-ga4"; 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from 'react-helmet-async';
-
 import './App.css';
-import webImge from './web.jpg';
-import dezImge from './dez.jpg';
+import webImge from './M11.png';
+import dezImge from './M22.png';
+import heroImge from './M33.png';
+import webImg from './M23.png'
+
+
 
 function App() {
-
-  // كود تشغيل جوجل أناليتكس
   useEffect(() => {
     ReactGA.initialize("G-J86V20VFYC");
     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
   }, []);
-
   const phoneNumber = "966555618227"; 
-
   const [products] = useState([
-  
     {
       id: 2,
       name: "متجر إلكتروني",
       desc: "بيع منتجاتك واستقبل المدفوعات مع لوحة تحكم",
-      price: 4500,          
+      price: 3500,          
       oldPrice: 7500,       
       image: dezImge
+    },
+    {
+      id: 4,
+      name: " موقع تعريفي    ",
+      desc: "  موقع تعريفي كامل + لوحة تحكم + ربط بجوجل + تهيئة SEO.  ",
+      price: 1500,          
+      oldPrice: 2000,       
+      image: webImg
+
     },
     {
       id: 3,
@@ -36,7 +42,9 @@ function App() {
       price: 299,          
       oldPrice: 650,       
       image: webImge
+    
     },
+
   ]);
 
   const [cart, setCart] = useState([]);
@@ -53,11 +61,9 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // 👇 2. تعديل دالة الإضافة لتشغيل التنبيه
   const addToCart = (product) => {
     setCart([...cart, product]);
     
-    // إظهار رسالة نجاح أنيقة
     toast.success(`تم إضافة "${product.name}" للسلة بنجاح! 🛒`, {
         position: "top-center",
         autoClose: 2000,
@@ -88,7 +94,6 @@ function App() {
 
   const checkoutViaWhatsApp = () => {
     if (cart.length === 0) {
-        // تنبيه إذا كانت السلة فارغة
         toast.warn("السلة فارغة! أضف منتجات أولاً ", {
             position: "top-center",
             theme: "dark",
@@ -110,13 +115,11 @@ function App() {
 
   return (
     <div className="App">
-      {/* 👇 إعدادات الـ SEO تضاف هنا في البداية */}
       <Helmet>
         <title>سول - تصميم مواقع ومتاجر إلكترونية</title>
         <meta name="description" content="خدمات تصميم مواقع ومتاجر إلكترونية احترافية. صمم موقعك وابدأ انطلاقتك الآن." />
         <meta name="keywords" content="تصميم مواقع, برمجة متاجر, متجر الكتروني, تطوير ويب, تصميم واجهات, السعودية, رياكت, React, صفحات هبوط, برمجة خاصة" />
       </Helmet>
-      {/* 👇 3. وضع حاوية التنبيهات هنا لتعمل في كل الموقع */}
       <ToastContainer />
 
       <nav className="navbar">
@@ -179,7 +182,7 @@ function App() {
           </div>
           <div className="hero-image">
              <img 
-              src="https://png.pngtree.com/png-clipart/20230809/original/pngtree-a-programmer-analyzing-on-laptop-screen-with-multiple-programming-languages-displayed-png-image_10207539.png" 
+              src= {heroImge}
               alt="Programmer" 
               style={{width: '100%', maxWidth: '450px'}}
             />
