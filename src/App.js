@@ -3,6 +3,7 @@ import ReactGA from "react-ga4"; // استدعاء جوجل أناليتكس
 // 👇 1. استدعاء مكتبة التنبيهات وتنسيقاتها
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
 
 import './App.css';
 import webImge from './web.jpg';
@@ -19,6 +20,7 @@ function App() {
   const phoneNumber = "966555618227"; 
 
   const [products] = useState([
+  
     {
       id: 2,
       name: "متجر إلكتروني",
@@ -107,7 +109,13 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="App">
+      {/* 👇 إعدادات الـ SEO تضاف هنا في البداية */}
+      <Helmet>
+        <title>سول - تصميم مواقع ومتاجر إلكترونية</title>
+        <meta name="description" content="خدمات تصميم مواقع ومتاجر إلكترونية احترافية. صمم موقعك وابدأ انطلاقتك الآن." />
+        <meta name="keywords" content="تصميم مواقع, برمجة متاجر, متجر الكتروني, تطوير ويب, تصميم واجهات, السعودية, رياكت, React, صفحات هبوط, برمجة خاصة" />
+      </Helmet>
       {/* 👇 3. وضع حاوية التنبيهات هنا لتعمل في كل الموقع */}
       <ToastContainer />
 
