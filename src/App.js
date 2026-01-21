@@ -72,13 +72,13 @@ function App() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark", // اخترنا الثيم الداكن ليناسب موقعك
+        theme: "dark", 
     });
   };
 
   const removeFromCart = (indexToRemove) => {
     setCart(cart.filter((_, index) => index !== indexToRemove));
-    // تنبيه عند الحذف
+   
     toast.error("تم حذف المنتج من السلة 🗑️", {
         position: "top-center",
         autoClose: 2000,

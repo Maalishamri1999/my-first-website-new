@@ -67,9 +67,7 @@ body {
   position: relative;
 }
 
-/* ============================
-   3. قسم الهيرو (البانر الأخضر)
-   ============================ */
+
 .hero-container {
   padding: 10px 5%;
 }
@@ -82,7 +80,7 @@ body {
   justify-content: space-between;
   align-items: center;
   color: white;
-  /* تم اعتماد التعديلات الإجبارية للارتفاع */
+  
   min-height: 200px !important;
   max-height: 200px !important;
   position: relative;
@@ -136,9 +134,7 @@ body {
   animation: floatImage 3s ease-in-out infinite;
 }
 
-/* ============================
-   4. المنتجات (Products)
-   ============================ */
+
 .section-title {
   text-align: center;
   color: var(--primary);
@@ -224,9 +220,7 @@ body {
   transition: var(--transition);
 }
 
-/* ============================
-   5. السلة (Cart)
-   ============================ */
+
 .cart-overlay {
   position: fixed;
   top: 0;
@@ -264,9 +258,6 @@ body {
   margin-top: auto;
 }
 
-/* ============================
-   6. الفوتر + شارة التوثيق
-   ============================ */
 .contact-cta {
   background-color: #e8f5e9;
   text-align: center;
@@ -282,7 +273,7 @@ body {
   text-align: center;
 }
 
-/* --- تنسيق شارة التوثيق (Trust Badge) --- */
+
 .trust-badge {
   display: inline-flex;
   align-items: center;
@@ -298,7 +289,7 @@ body {
 }
 
 .trust-badge span.badge-icon {
-  color: #4ade80; /* أيقونة الصح */
+  color: #4ade80; 
   font-size: 22px;
 }
 
@@ -322,9 +313,6 @@ body {
   letter-spacing: 1px;
 }
 
-/* ============================
-   7. الحركات (Animations)
-   ============================ */
 @keyframes floatImage {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-12px); }
@@ -342,21 +330,18 @@ body {
   100% { transform: scale(1); }
 }
 
-/* ============================
-   8. التجاوب مع الجوال (Media Queries)
-   تعديل شامل ونهائي
-   ============================ */
+
 @media (max-width: 768px) {
   
-  /* منع الاهتزاز */
+
   body, html {
     overflow-x: hidden;
     width: 100%;
   }
 
-  /* --- الهيرو (Banner) --- */
+ 
   .hero-box {
-    flex-direction: row; /* جنب بعض: نص يمين وصورة يسار */
+    flex-direction: row; 
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
@@ -387,7 +372,7 @@ body {
     height: auto;
   }
 
-  /* صورة الهيرو في الجوال */
+  
   .hero-image {
     margin: 0 !important;
     display: flex;
@@ -395,12 +380,12 @@ body {
   }
 
   .hero-image img {
-    width: 100px !important; /* حجم صغير ومناسب */
+    width: 100px !important; 
     height: 100px !important;
     border-radius: 12px;
   }
 
-  /* --- شبكة المنتجات (2 في السطر) --- */
+
   .products-grid {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -410,7 +395,7 @@ body {
   }
 
   .product-card {
-    /* معادلة دقيقة: 50% ناقص المسافة */
+  
     width: calc(50% - 15px) !important; 
     box-sizing: border-box !important;
     margin: 0 !important;
@@ -439,7 +424,7 @@ body {
     margin: 30px 0 20px;
   }
 
-  /* شارة التوثيق في الجوال */
+  
   .trust-badge {
     width: 90%;
     justify-content: center;
